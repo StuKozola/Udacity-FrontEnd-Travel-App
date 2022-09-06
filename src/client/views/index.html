@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Travel Planner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <ul class="nav-content">
+                <li><a href="index.html"><i class="fas fa-home"></i></a></li>
+                <li><a href="https://github.com/StuKozola/Udacity-FrontEnd-Travel-App"><i class="fab fa-github"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+        <header class="header">
+            <h1 class="header-title">Travel Planner</h1>
+        </header>
+
+        <section class="travel-form">
+            <div class="form">
+                <form id="trip-entry" onsubmit="Client.handleSubmit(event)">
+                    <label class="label city" for="location">Location</label>
+                    <input class="input city" type="search" id="location" name="location" placeholder="Enter a location"
+                        required>
+                    <label class="label start-date" for="start_date">Start Date</label>
+                    <input class="form start-date" type="date" id="start_date" name="start_date" required>
+                    <label class="label end-date" for="return_date">Return Date</label>
+                    <input class="form end-date" type="date" id="end_date" name="end_date" required>
+                    <button class="button add-trip" type="submit">Add</button>
+                </form>
+            </div>
+        </section>
+        
+        <!--- Modal for saving planned trips -->
+        <div id="save-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Save Trip</h2>
+                <form id="save-trip" onsubmit="Client.saveTrip(event)">
+                    <label class="label trip-name" for="trip_name">Trip Name</label>
+                    <input class="input trip-name" type="text" id="trip_name" name="trip_name"
+                        placeholder="Enter a trip name" required>
+                    <button class="button save-trip" type="submit">Save</button>
+                </form>
+            </div>
+
+            <section class="trip-container">
+                <div class="entries">
+                    <h2>Planned Trips</h2>
+                    <div id="trip-details"></div>
+                </div>
+            </section>
+
+            <footer>
+                <p>Project powered by <a href="">API</a></p>
+            </footer>
+
+            <script src="index.js"></script>
+</body>
+
+</html>
