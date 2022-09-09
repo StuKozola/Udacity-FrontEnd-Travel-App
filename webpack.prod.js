@@ -29,7 +29,7 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
             {
-                test: /\.png$/,
+                test: /\.(png|webp)$/,
                 use: [{
                     loader: 'file-loader',
                     options: { name: '[name].[ext]' }

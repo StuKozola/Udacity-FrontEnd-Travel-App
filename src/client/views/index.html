@@ -6,18 +6,12 @@
     <meta charset="utf-8">
     <title>Travel Planner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/resets.css">
-    <link rel="stylesheet" href="../styles/modal.css">
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/cards.css">
-    <link rel="stylesheet" href="../styles/form.css">
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="../img/logo-no-background.png" alt="Logo">
+            <img src="logo-no-background.png" alt="Logo">
         </div>
         <nav class="nav">
             <ul class="nav-content">
@@ -35,7 +29,7 @@
     <section class="travel-form">
         <h1 class="form-title">Let's Take a Trip!</h1>
         <div class="form">
-            <form id="trip-entry" onsubmit="handleTripEntry(event)">
+            <form id="trip-entry" onsubmit="Client.handleTripEntry(event)">
                 <label class="label location" for="location">Location</label>
                 <input class="input-city" type="search" id="location" name="location" placeholder="Enter a city and country"
                     required>
@@ -132,8 +126,6 @@
     <footer>
         <p>Project powered by <a href="">API</a></p>
     </footer>
-
-    <script src="../index.js"></script>
 </body>
 
 </html>
