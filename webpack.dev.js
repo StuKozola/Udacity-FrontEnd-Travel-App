@@ -24,11 +24,11 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             },
             {
-                test: /\.(jpe?g|png)$/i,
-                loaders: [
-                    'file-loader',
-                    'webp-loader'
-                ]
+                test: /\.(png|webp)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: { name: '[name].[ext]' }
+                }]
             }
         ]
     },

@@ -1,6 +1,13 @@
+import { getLatLon, getHotels } from "./geonames";
+
 const handleTripEntry = event => {
     event.preventDefault();
     resetModal();
+
+    // api keys from .env file
+    const geonamesKey = process.env.GEONAMES_KEY;
+    const weatherbitKey = process.env.WEATHERBIT_KEY;
+    const pixabayKey = process.env.PIXABAY_KEY;
     
     // ***** Show the Modal to select Hotel ***** //
     const modal = document.getElementById("save-modal");
@@ -9,11 +16,38 @@ const handleTripEntry = event => {
     const savebtn = document.getElementById("saveBtn");
     const closebtn = document.getElementsByClassName("close")[0];
 
+    // from the city, get the latitude and longitude
+    const location = document.getElementById("location").value;
+    getLatLon(location, geonamesKey)
+    .then(data => {
+        const lat = data.geonames[0].lat;
+        const lon = data.geonames[0].lng;
+        const country = data.geonames[0].countryName;
+        const city = data.geonames[0].name;
+        console.log(data);
+    }); 
+        
+    
+    // from the city, get nearby hotels
+    getHotels(location, geonamesKey)
+    .then(data => {
+        const hotels = data.geonames;
+        const hotelSelect = document.getElementById("hotel");
+        hotels.forEach(hotel => {
+            const option = document.createElement("option");
+            option.value = hotel.name;
+            option.innerHTML = hotel.name;
+            hotelSelect.appendChild(option);
+        });
+    });
+
+
     // Fill in the modal with the trip data
-    document.getElementById("modal-city").innerHTML = document.getElementById("location").value;
+    document.getElementById("modal-city").innerHTML = location;
     document.getElementById("departure").innerHTML = document.getElementById("start_date").value;
     document.getElementById("return").innerHTML = document.getElementById("return_date").value;
     modal.style.display = "block";
+
 
     // When the user clicks on the close span element or cancel button, close the modal
     closebtn.onclick = function () {
@@ -51,6 +85,15 @@ function validateForm() {
     }
 
     return true;
+}
+
+// function to get number of days from two dates
+function getDays(startDate, endDate) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const firstDate = new Date(startDate);
+    const secondDate = new Date(endDate);
+    const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+    return diffDays;
 }
 
 // function to reset modal data
