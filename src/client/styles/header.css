@@ -6,10 +6,20 @@ header {
     padding: 10px 40px;
 }
 
-.navbar {
+.nav {
     display: inline-block;
-    li {
-        display: inline;
-        padding: 2px;
-    }
+}
+
+.nav li {
+    display: inline;
+    padding: 2px;
+}
+
+.logo img {
+    width: 300px;
+}
+
+.fab, .fas {
+    color: teal;
+    font-size: 2rem;
 }

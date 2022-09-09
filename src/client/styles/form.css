@@ -1,0 +1,47 @@
+form {
+    display: flex;
+    flex-direction: row;
+    border: 3px solid teal;
+    border-radius: 10px;
+    padding: 15px;
+    justify-content: center; 
+    margin: 2rem auto !important;  
+    max-width: 80%; 
+}
+
+.form-title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    color:#01342d;
+}
+
+label {
+    margin: 1rem;
+}
+
+input {
+    padding: 5px 20px;
+    line-height: 16px;
+    margin: 10px 0;
+}
+
+button {
+    background: teal;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+button:hover {
+    background: #00bfa5;
+}
+
+
+
+#name {
+    background-color: beige;
+}
