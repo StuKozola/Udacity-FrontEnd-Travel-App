@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+
+html,
+body {
+    background-color: #F3F3F3;
+    font-family: 'Roboto', sans-serif;
+    background-image: url(../img/sun-pattern.webp); 
+}
+
+h1,
+h2,
+h3,
+h4 {
+    position: relative;
+}
+
+h1 {
+    color: #666;
+    font-weight: 300;
+    font-size: 6.5em;
+    line-height: .2em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 2.25em;
+}
+
+h3 {
+    float: left;
+    margin-right: 33px;
+    color: #777;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+h4 {
+    line-height: 1.5em;
+}
+
+p {
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #666;
+}

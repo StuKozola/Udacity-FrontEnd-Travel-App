@@ -1,20 +1,19 @@
-
 const handleTripEntry = event => {
     event.preventDefault();
-
-    // ***** MODAL Management ***** //
+    resetModal();
+    
+    // ***** Show the Modal to select Hotel ***** //
     const modal = document.getElementById("save-modal");
     const addbtn = document.getElementById("addBtn");
     const cancelbtn = document.getElementById("cancelBtn");
     const savebtn = document.getElementById("saveBtn");
     const closebtn = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on the add button, open the modal
-    addbtn.onclick = function () {
-        if (validateForm()) {
-            modal.style.display = "block";
-        }
-    }
+    // Fill in the modal with the trip data
+    document.getElementById("modal-city").innerHTML = document.getElementById("location").value;
+    document.getElementById("departure").innerHTML = document.getElementById("start_date").value;
+    document.getElementById("return").innerHTML = document.getElementById("return_date").value;
+    modal.style.display = "block";
 
     // When the user clicks on the close span element or cancel button, close the modal
     closebtn.onclick = function () {
@@ -26,7 +25,6 @@ const handleTripEntry = event => {
 
     // When user clicks outside of modal, close the modal
     window.onclick = function (event) {
-        console.log(event.target);
         if (event.target == modal) {
             modal.style.display = "none";
         }
@@ -55,4 +53,12 @@ function validateForm() {
     return true;
 }
 
-export { handleTripEntry }
+// function to reset modal data
+function resetModal() {
+    document.getElementById("modal-city").innerHTML = "";
+    document.getElementById("departure").innerHTML = "";
+    document.getElementById("return").innerHTML = "";
+    document.getElementById("hotel").innerHTML = '<option value="none">None</option>';
+}
+
+export { handleTripEntry, validateForm, resetModal }
