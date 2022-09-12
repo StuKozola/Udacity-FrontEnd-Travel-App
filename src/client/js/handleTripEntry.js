@@ -2,10 +2,15 @@ import { getLatLon, getHotels } from "./geonames";
 
 const handleTripEntry = event => {
     event.preventDefault();
+    // check dates are valid
+    if (!validateForm()) {
+        return;
+    }
     resetModal();
 
+
     // api keys from .env file
-    const geonamesKey = process.env.GEONAMES_KEY;
+    const gonamesUserName = process.env.GEONAMES_USERNAME;
     const weatherbitKey = process.env.WEATHERBIT_KEY;
     const pixabayKey = process.env.PIXABAY_KEY;
     
@@ -18,7 +23,7 @@ const handleTripEntry = event => {
 
     // from the city, get the latitude and longitude
     const location = document.getElementById("location").value;
-    getLatLon(location, geonamesKey)
+    getLatLon(location, geonamesUserName)
     .then(data => {
         const lat = data.geonames[0].lat;
         const lon = data.geonames[0].lng;
@@ -29,7 +34,7 @@ const handleTripEntry = event => {
         
     
     // from the city, get nearby hotels
-    getHotels(location, geonamesKey)
+    getHotels(location, gonamesUserName)
     .then(data => {
         const hotels = data.geonames;
         const hotelSelect = document.getElementById("hotel");
@@ -81,6 +86,13 @@ function validateForm() {
     }
     if (endDate == "") {
         alert("Please enter an return date");
+        return false;
+    }
+
+    // check that start date < return date
+    const days = getDays(startDate, endDate);
+    if (days < 0) {
+        alert("Start date must be before return date");
         return false;
     }
 

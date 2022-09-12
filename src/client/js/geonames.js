@@ -2,7 +2,8 @@
 // URL: ''http://api.geonames.org/searchJSON?q=<City and Country>&maxRows=1&username=<username>'
 
 const getLatLon = async (cityName, username) => {
-    const baseUrl = 'https://api.geonames.org/searchJSON';
+    const baseUrl = 'http://api.geonames.org/searchJSON';
+    console.log('Entering: baseUrl' + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
     const response = await fetch(baseUrl + '?q=' + cityName + '&username=' + username);
     try {
         const data = await response.json();
