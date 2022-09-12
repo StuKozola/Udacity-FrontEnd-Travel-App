@@ -3,8 +3,7 @@
 
 const getLatLon = async (cityName, username) => {
     const baseUrl = 'http://api.geonames.org/searchJSON';
-    console.log('Entering: baseUrl' + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
-    const response = await fetch(baseUrl + '?q=' + cityName + '&username=' + username);
+    console.log('Entering: 'baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);    const response = await fetch(baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
     try {
         const data = await response.json();
         //console.log(data);
@@ -15,14 +14,15 @@ const getLatLon = async (cityName, username) => {
 }
 
 // Function to get Hotels from Geonames API
-// URL: ''http://www.geonames.org/findNearbyHotelsJSON?lat=<LAT>&lon=<LON>''
+// URL: ''http://www.geonames.org/findNearbyHotelsJSON?lat=<LAT>&lng=<LON>''
 
 const getHotels = async (lat, lon) => {
     const baseUrl = 'https://www.geonames.org/findNearbyHotelsJSON';
-    const response = await fetch(baseUrl + '?lat=' + lat + '&lon=' + lon);
+    console.log('Entering: ' + baseUrl + '?lat=' + lat + '&lng=' + lon);
+    const response = await fetch(baseUrl + '?lat=' + lat + '&lng=' + lon);
     try {
         const data = await response.json();
-        //console.log(data);
+        console.log(data);
         return data;
     } catch (error) {
         console.log("error", error);

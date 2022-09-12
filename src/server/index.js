@@ -1,7 +1,3 @@
-// load secrets and config information
-const dotenv = require('dotenv');
-dotenv.config();
-
 // set up express and app dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
