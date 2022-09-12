@@ -3,7 +3,7 @@
 
 const getLatLon = async (cityName, username) => {
     const baseUrl = 'http://api.geonames.org/searchJSON';
-    console.log('Entering: ' +baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);    const response = await fetch(baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
+    const response = await fetch(baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
     try {
         const data = await response.json();
         //console.log(data);
@@ -18,7 +18,6 @@ const getLatLon = async (cityName, username) => {
 
 const getHotels = async (lat, lon) => {
     const baseUrl = 'https://www.geonames.org/findNearbyHotelsJSON';
-    console.log('Entering: ' + baseUrl + '?lat=' + lat + '&lng=' + lon);
     const response = await fetch(baseUrl + '?lat=' + lat + '&lng=' + lon);
     try {
         const data = await response.json();

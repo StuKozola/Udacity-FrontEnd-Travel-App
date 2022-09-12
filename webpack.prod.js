@@ -53,7 +53,7 @@ module.exports = {
             'process.env.WEATHERBIT_KEY': JSON.stringify(process.env.WEATHERBIT_API_KEY),
             'process.env.PIXABAY_KEY': JSON.stringify(process.env.PIXABAY_API_KEY),
             'process.env.ROADGOAT_KEY': JSON.stringify(process.env.ROADGOAT_API_KEY),
-            'process.env.PIXABAY_KEY': JSON.stringify(process.env.ROADGOAT_SECRET_KEY),
+            'process.env.ROADGOAT_SECRET_KEY': JSON.stringify(process.env.ROADGOAT_SECRET_KEY),
             'process.env.PORT': JSON.stringify(process.env.PORT)
         })
     ]

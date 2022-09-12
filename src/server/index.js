@@ -20,8 +20,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-console.log(__dirname)
-let projectData = {};
+let tripData = {};
 
 // get request to the root url
 app.get('/', (req, res) => {
@@ -37,8 +36,8 @@ app.post('/trip', (req, res) => {
 
 // get request for all trip data
 app.get('/all', (req, res) => {
-    res.send(projectData);
-    console.log(projectData);
+    res.send(tripData);
+    console.log(tripData);
 });
 
 // test server

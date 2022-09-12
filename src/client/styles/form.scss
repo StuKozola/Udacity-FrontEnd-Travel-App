@@ -40,8 +40,15 @@ button:hover {
     background: #00bfa5;
 }
 
+.fa-spin{
+    animation: rotation 2s infinite linear
+}
 
-
-#name {
-    background-color: beige;
+@keyframes rotation {
+    0%{
+        transform:rotate(0deg);
+    }
+    100%{
+        transform:rotate(359deg);
+    }
 }
