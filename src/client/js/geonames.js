@@ -3,7 +3,7 @@
 
 const getLatLon = async (cityName, username) => {
     const baseUrl = 'http://api.geonames.org/searchJSON';
-    console.log('Entering: 'baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);    const response = await fetch(baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
+    console.log('Entering: ' +baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);    const response = await fetch(baseUrl + '?q=' + cityName + '&maxRows=1' +'&username=' + username);
     try {
         const data = await response.json();
         //console.log(data);

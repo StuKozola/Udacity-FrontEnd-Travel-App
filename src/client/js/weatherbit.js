@@ -14,9 +14,9 @@ const getWeather = async (lat, lon, apiKey) => {
 }
 
 // Function to get the forecast weather form Weatherbit API
-// URL: 'https://api.weatherbit.io/v2.0/daily?lat=<LAT>&lon=<LON>&key=API_KEY'
+// URL: 'https://api.weatherbit.io/v2.0/forecast/daily?lat=<LAT>&lon=<LON>&key=API_KEY'
 const getWeatherForecast = async (lat, lon, apiKey) => {
-    const baseUrl = 'https://api.weatherbit.io/v2.0/daily';
+    const baseUrl = 'https://api.weatherbit.io/v2.0/forecast/daily';
     console.log(baseUrl + '?lat=' + lat + '&lon=' + lon + '&key=' + apiKey);
     const response = await fetch(baseUrl + '?lat=' + lat + '&lon=' + lon + '&key=' + apiKey);
     try {

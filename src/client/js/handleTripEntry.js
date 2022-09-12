@@ -1,5 +1,6 @@
 import { getLatLon, getHotels } from "./geonames";
-import { getWeather } from "./weatherbit";
+import { getWeather, getWeatherForecast } from "./weatherbit";
+import { getLocalImage } from "./pixabay";
 
 const handleTripEntry = event => {
     event.preventDefault();
@@ -18,8 +19,10 @@ const handleTripEntry = event => {
     let tripData = {
         city: [],
         weather: [],
+        forecast: [],
         image: [],
-        hotels: []
+        hotels: [],
+        selectedHotel: []
     };
 
     // ***** Show the Modal to select Hotel ***** //
@@ -45,6 +48,7 @@ const handleTripEntry = event => {
         .then(data => {
             const hotels = data.hotels;
             const hotelSelect = document.getElementById("hotel");
+            tripData.hotels = hotels;
             // add hotels to the select list
             for( const hotel of hotels) {
                 const option = document.createElement("option");
@@ -52,24 +56,35 @@ const handleTripEntry = event => {
                 option.innerHTML = hotel.hotelName;
                 hotelSelect.appendChild(option);
             };
-        });
 
-        // get the weather for the city and dates
-        const startDate = document.getElementById("start_date").value;
-        const endDate = document.getElementById("return_date").value;
-        getWeather(lat, lon, weatherbitKey, startDate, endDate)
-        .then(data => {
-            tripData.weather = data.data;
-        });
+            // get the current weather for the city
+            getWeather(lat, lon, weatherbitKey)
+            .then(data => {
+                tripData.weather = data.data;
+            });
 
+            // get forecast weather for the city
+            getWeatherForecast(lat, lon, weatherbitKey)
+            .then(data => {
+                tripData.forecast = data.data;
+            });
+
+            // get the image for the city
+            getLocalImage(city, pixabayKey)
+            .then(data => {
+                tripData.image = data.hits;
+                // add image to the modal
+                const image = document.getElementById("modal-image");
+                image.src = data.hits[0].webformatURL;
+            });
+
+            // Fill in the modal with the trip data
+            document.getElementById("modal-city").innerHTML = tripData.city.name + ", " + tripData.city.countryName;
+            document.getElementById("departure").innerHTML = document.getElementById("start_date").value;
+            document.getElementById("return").innerHTML = document.getElementById("return_date").value;
+            modal.style.display = "block";
+        });
     });
-
-    // Fill in the modal with the trip data
-    document.getElementById("modal-city").innerHTML = tripData.city.name + ", " + tripData.city.countryName;
-    document.getElementById("departure").innerHTML = document.getElementById("start_date").value;
-    document.getElementById("return").innerHTML = document.getElementById("return_date").value;
-    modal.style.display = "block";
-
 
     // When the user clicks on the close span element or cancel button, close the modal
     closebtn.onclick = function () {
