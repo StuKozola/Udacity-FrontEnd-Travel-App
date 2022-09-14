@@ -5,7 +5,7 @@ const getWeather = async (lat, lon, apiKey) => {
     const response = await fetch(baseUrl + '?lat=' + lat + '&lon=' + lon + '&key=' + apiKey);
     try {
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (error) {
         console.log("error", error);
@@ -19,7 +19,7 @@ const getWeatherForecast = async (lat, lon, apiKey) => {
     const response = await fetch(baseUrl + '?lat=' + lat + '&lon=' + lon + '&key=' + apiKey);
     try {
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (error) {
         console.log("error", error);

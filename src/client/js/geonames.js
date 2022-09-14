@@ -21,7 +21,7 @@ const getHotels = async (lat, lon) => {
     const response = await fetch(baseUrl + '?lat=' + lat + '&lng=' + lon);
     try {
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (error) {
         console.log("error", error);

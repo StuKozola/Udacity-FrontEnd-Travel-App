@@ -5,7 +5,7 @@ const getLocalImage = async (cityName, apiKey) => {
     const response = await fetch(baseUrl + '?category=travel&q='+ cityName +'&key=' + apiKey);
     try {
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (error) {
         console.log("error", error);

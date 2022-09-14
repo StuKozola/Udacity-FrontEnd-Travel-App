@@ -30,8 +30,8 @@ app.get('/', (req, res) => {
 
 // post request for the trip data
 app.post('/trip', (req, res) => {
-    console.log(req.body);
-    res.send(req.body);
+    const newData = req.body;
+    res.send(newData);
 });
 
 // get request for all trip data
