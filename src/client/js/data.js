@@ -58,9 +58,24 @@ function getDays(startDate, endDate) {
     const oneDay = 24 * 60 * 60 * 1000;
     const firstDate = new Date(startDate);
     const secondDate = new Date(endDate);
-    const diffDays = Math.round((secondDate - firstDate) / oneDay);
-    console.log('Date difference: ' + diffDays);
+    const diffDays = Math.round((secondDate.getTime() - firstDate.getTime()) / oneDay );
     return diffDays;
 }
 
-export { saveTrip, getTrips, postData, getTripData, getDays } 
+// function to format the date
+function formatDate(date) {
+    const d = new Date(date.split('-'));
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const newDate = d.toLocaleDateString('en-US', options);
+    return newDate;
+}
+
+// function to format the date short
+function formatDateShort(date) {
+    const d = new Date(date.split('-'));
+    const options = { month: 'numeric', day: 'numeric' };
+    const newDate = d.toLocaleDateString('en-US', options);
+    return newDate;
+}
+
+export { saveTrip, getTrips, postData, getTripData, getDays, formatDate, formatDateShort }

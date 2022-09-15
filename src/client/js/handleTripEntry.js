@@ -151,6 +151,14 @@ function validateForm() {
         return false;
     }
 
+    // check that start date is not in the past
+    const today = new Date();
+    const start = new Date(startDate);
+    if (start < today) {
+        alert("Unless you have a time machine, start date must be today or in the future");
+        return false;
+    }
+
     return true;
 }
 

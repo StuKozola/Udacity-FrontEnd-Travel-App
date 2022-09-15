@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
 
+// load secrets and config information
+const dotenv = require('dotenv');
+dotenv.config();
+
 // PORT is set in the .env file
 const PORT = process.env.PORT || 8080;
 
@@ -32,6 +36,7 @@ app.get('/', (req, res) => {
 app.post('/trip', (req, res) => {
     const newData = req.body;
     res.send(newData);
+    console.log('Received trip data from client');
 });
 
 // get request for all trip data
