@@ -5,7 +5,7 @@ function createCards(tripData) {
     // get today's date
     const today = new Date();
     // get days from today to trip start date
-    const days = getDays(Date.parse(tripData.dates[0]),today)+1;
+    const days = getDays(today, Date.parse(tripData.dates[0]))+1;
     // if the trip start date is greater than 16 days from tody, don't show the weather
     let tripForecast = 'No Weather Forecast Available for Trip';
     if (days < 16) {
@@ -15,12 +15,16 @@ function createCards(tripData) {
         let tripHigh = '<tr>';
         let tripLow = '<tr>';
         // for each day of the trip, get the weather forecast
-        for (let i = days; i < (days+5); i++) {
-            // add a table column for each day of the trip
-            tripDate += `<td>${formatDateShort(tripData.forecast[i].datetime)}</td>`;
-            tripIcon += `<td><img class="weather-icon-small" src="https://www.weatherbit.io/static/img/icons/${tripData.forecast[i].weather.icon}.png" alt="${tripData.forecast[i].weather.description}"></td>`;
-            tripHigh += `<td>${tripData.forecast[i].high_temp}°</td>`;
-            tripLow += `<td>${tripData.forecast[i].low_temp}°</td>`;
+        for (let i = days;  i < (days+5); i++) {
+            console.log('i = ' + i);
+            console.log(tripData.forecast[i])
+            if (i < 16) {
+                // add a table column for each day of the trip
+                tripDate += `<td>${formatDateShort(tripData.forecast[i].datetime)}</td>`;
+                tripIcon += `<td><img class="weather-icon-small" src="https://www.weatherbit.io/static/img/icons/${tripData.forecast[i].weather.icon}.png" alt="${tripData.forecast[i].weather.description}"></td>`;
+                tripHigh += `<td>${tripData.forecast[i].high_temp}°</td>`;
+                tripLow += `<td>${tripData.forecast[i].low_temp}°</td>`;
+            }
         }
         // close the table row
         tripDate += '</tr>';

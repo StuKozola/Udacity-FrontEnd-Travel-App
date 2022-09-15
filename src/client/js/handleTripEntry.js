@@ -18,6 +18,7 @@ const handleTripEntry = event => {
 
     // array to store data for trip
     let tripData = {
+        id: [],
         city: [],
         weather: [],
         forecast: [],

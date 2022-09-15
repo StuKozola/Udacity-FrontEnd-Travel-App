@@ -31,20 +31,17 @@
 
 .card-header {
     grid-area: header;
-    border: 1px solid red;
   }
 
 .card-img {
     grid-area: img;
     width: 100%;
     object-fit: cover;
-    border: 1px solid red;
 }
 
 .card-text {
     grid-area: txt;
     padding: 1rem;
-    border: 1px solid red;
 }
 
 .card:hover {
