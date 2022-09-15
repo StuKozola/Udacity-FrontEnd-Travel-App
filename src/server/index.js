@@ -37,12 +37,12 @@ app.post('/trip', (req, res) => {
     const newData = req.body;
     res.send(newData);
     console.log('Received trip data from client');
+    tripData.appending = newData;
 });
 
 // get request for all trip data
 app.get('/all', (req, res) => {
     res.send(tripData);
-    console.log(tripData);
 });
 
 // test server

@@ -18,7 +18,7 @@ function createCards(tripData) {
         for (let i = days; i < (days+5); i++) {
             // add a table column for each day of the trip
             tripDate += `<td>${formatDateShort(tripData.forecast[i].datetime)}</td>`;
-            tripIcon += `<td><img src="https://www.weatherbit.io/static/img/icons/${tripData.forecast[i].weather.icon}.png" alt="${tripData.forecast[i].weather.description}"></td>`;
+            tripIcon += `<td><img class="weather-icon-small" src="https://www.weatherbit.io/static/img/icons/${tripData.forecast[i].weather.icon}.png" alt="${tripData.forecast[i].weather.description}"></td>`;
             tripHigh += `<td>${tripData.forecast[i].high_temp}°</td>`;
             tripLow += `<td>${tripData.forecast[i].low_temp}°</td>`;
         }
@@ -27,8 +27,9 @@ function createCards(tripData) {
         tripIcon += '</tr>';
         tripHigh += '</tr>';
         tripLow += '</tr>';
+
         // add the weather forecast to the card
-        tripForecast = tripDate + tripHigh + tripLow;
+        tripForecast = tripDate + tripIcon + tripHigh + tripLow;
     }
 
     // create the tip card

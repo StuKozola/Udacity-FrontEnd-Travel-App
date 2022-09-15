@@ -10,6 +10,7 @@
 #trip-details {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .trip-title {
     margin-top: 2rem;
@@ -25,6 +26,7 @@
     background: white;
     box-shadow: 2px 2px 6px grey;
     max-width: 90%;
+    margin: 0.5rem;
 }
 
 .card-header {
@@ -64,56 +66,12 @@
     cursor: pointer;
 }
 
-.sky {
-    position: relative;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #03A9F4;
+.weather-icon {
+    max-width: 100%;
 }
 
-.sun {
-    position: relative;
-    top: -3px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background-color: #FFEB3B;
-    -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1) .5s;
-}
-
-.cloud {
-    position: absolute;
-    top: 60px;
-    left: 30px;
-    -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1) .7s;
-}
-
-.cloud:before,
-.cloud:after {
-    position: absolute;
-    display: block;
-    content: "";
-}
-
-.cloud:before {
-    margin-left: -10px;
-    width: 51px;
-    height: 18px;
-    background: #fff;
-}
-
-.cloud:after {
-    position: absolute;
-    top: -10px;
-    left: -22px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 50px -6px 0 6px #fff, 25px -19px 0 10px #fff;
+.weather-icon-small {
+    max-width: 40%;
 }
 
 table {
@@ -128,8 +86,7 @@ tr:nth-child(1) td:nth-child(2),
 tr:nth-child(1) td:nth-child(3),
 tr:nth-child(1) td:nth-child(4),
 tr:nth-child(1) td:nth-child(5) {
-    padding-bottom: 32px;
-    -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1) .7s;
+    padding-bottom: 7px;
 }
 
 tr:nth-child(2) td:nth-child(1),
@@ -138,7 +95,6 @@ tr:nth-child(2) td:nth-child(3),
 tr:nth-child(2) td:nth-child(4),
 tr:nth-child(2) td:nth-child(5) {
     padding-bottom: 7px;
-    -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1) .9s;
 }
 
 tr:nth-child(3) td:nth-child(1),
@@ -147,15 +103,14 @@ tr:nth-child(3) td:nth-child(3),
 tr:nth-child(3) td:nth-child(4),
 tr:nth-child(3) td:nth-child(5) {
     padding-bottom: 7px;
-    -webkit-animation: up 2s cubic-bezier(.39, 0, .38, 1) .9s;
 }
 
-tr:nth-child(2),
-tr:nth-child(3) {
+tr:nth-child(3),
+tr:nth-child(4) {
     font-size: .9em;
 }
 
-tr:nth-child(3) {
+tr:nth-child(4) {
     color: #999;
 }
 

@@ -111,7 +111,15 @@ const handleTripEntry = event => {
                             tripData.image = data.hits;
                             // add image to the modal
                             const image = document.getElementById("city-img");
-                            image.src = data.hits[0].webformatURL;
+                            // if no image found, use a default image of the country
+                            if (data.totalHits == 0) {
+                                getLocalImage(country, pixabayKey)
+                                .then(stateData => {
+                                    image.src = stateData.hits[0].webformatURL;
+                                    });
+                            } else {
+                                image.src = data.hits[0].webformatURL;
+                            }
                         });
 
                     // Fill in the modal with the trip data and display the modal
