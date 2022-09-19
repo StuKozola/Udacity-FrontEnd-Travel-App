@@ -10,8 +10,8 @@ The project also uses the [Express](https://expressjs.com/) framework for Node.j
     
 
 # Example Screenshots
-![Screenshot](/src/client/img/screenshot.png)
-![Screenshot Mobile](/src/client/img/screenshot_mobile.png)
+![Screenshot](/src/client/img/screenshot.gif)
+![Screenshot Mobile](/src/client/img/screenshot_mobile.gif)
 
 # Installation
 To install the code, use `git clone` to copy the repo locally.  Alternatively you can download the files from this repository.
