@@ -1,12 +1,13 @@
 form {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     border: 3px solid teal;
     border-radius: 10px;
     padding: 15px;
     justify-content: center; 
     margin: 2rem auto !important;  
-    max-width: 80%; 
+    max-width: 90%; 
 }
 
 .form-title {
@@ -40,6 +41,13 @@ button:hover {
     background: #00bfa5;
 }
 
+.add-trip {
+    
+    .fa {
+    padding-right: 0px;
+    }
+}
+ 
 .fa-spin{
     transform-origin: center;
     animation: rotation 2s infinite linear
@@ -47,9 +55,22 @@ button:hover {
 
 @keyframes rotation {
     0%{
+        -webkit-transform: rotate(0deg);
         transform:rotate(0deg);
     }
     100%{
+        -webkit-transform: rotate(359deg);
+        transform:rotate(359deg);
+    }
+}
+
+@-webkit-keyframes rotation {
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform:rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(359deg);
         transform:rotate(359deg);
     }
 }

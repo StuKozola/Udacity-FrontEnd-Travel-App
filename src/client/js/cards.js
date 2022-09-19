@@ -16,8 +16,6 @@ function createCards(tripData) {
         let tripLow = '<tr>';
         // for each day of the trip, get the weather forecast
         for (let i = days;  i < (days+5); i++) {
-            console.log('i = ' + i);
-            console.log(tripData.forecast[i])
             if (i < 16) {
                 // add a table column for each day of the trip
                 tripDate += `<td>${formatDateShort(tripData.forecast[i].datetime)}</td>`;
@@ -38,12 +36,10 @@ function createCards(tripData) {
 
     // create the tip card
     let aTrip = `
-    <div class="card" id="trip-1">
-                <div class="card-header">
-                    <span class="delete">&times;</span>
-                </div>
+    <div class="card" id="trip-${tripData.id}">
                 <div class="card-img">
                     <img src="${tripData.image[0].webformatURL}" alt="${tripData.image[0].tags}">
+                    <div class="delete">&times;</div>
                 </div>
                 <div class="card-text">
                     <h2 class="card-city">${tripData.city.name}, ${tripData.city.countryName}</h2>
@@ -51,9 +47,9 @@ function createCards(tripData) {
                     <p><i class="fa fa-hotel"></i><i class="hotel">${tripData.selectedHotel}</i></p>
                     <p><i class="fa fa-car"></i><i class="fa fa-plane"></i>Days until departure: <i class="days">${days}</i>
                     </p>
+                    <img id="weather-icon" src="https://www.weatherbit.io/static/img/icons/${tripData.weather[0].weather.icon}.png" alt="${tripData.weather[0].weather.description}">
                     <h1 class="curr-temp">${tripData.weather[0].temp}°C</h1>
                     <div class="current-weather">
-                        <img id="weather-icon" src="https://www.weatherbit.io/static/img/icons/${tripData.weather[0].weather.icon}.png" alt="${tripData.weather[0].weather.description}">
                     </div>
                     <table>
                         ${tripForecast}
@@ -69,6 +65,15 @@ function createCards(tripData) {
     const deleteBtn = document.getElementsByClassName("delete");
     for (let i = 0; i < deleteBtn.length; i++) {
         deleteBtn[i].addEventListener("click", function () {
+            // remove the trip from local storage
+            let trips = JSON.parse(localStorage.getItem("trips"));
+            let tripID = this.parentElement.parentElement.id;
+            trips = trips.filter(trip => trip.id !== parseInt(tripID.split('-')[1]));
+            localStorage.setItem("trips", JSON.stringify(trips));
+            // remove the card from the page
+            console.log('Delete trip: ' + tripID);
+            //console.log(trips);
+            localStorage.setItem('trips', JSON.stringify(trips));
             this.parentElement.parentElement.remove();
         });
     }

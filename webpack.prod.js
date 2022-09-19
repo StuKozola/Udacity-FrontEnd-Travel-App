@@ -33,7 +33,7 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
             {
-                test: /\.(png|webp)$/,
+                test: /\.(png|webp|ico)$/,
                 use: [{
                     loader: 'file-loader',
                     options: { name: '[name].[ext]' }
@@ -45,6 +45,7 @@ module.exports = {
         new HtmlWebPackPlugin({
             template: "./src/client/views/index.html",
             filename: "./index.html",
+            favicon: './src/client/img/favicon.ico'
         }),
         new MiniCssExtractPlugin({ filename: "[name].css" }),
         new WorkboxPlugin.GenerateSW(),

@@ -28,6 +28,11 @@ const handleTripEntry = event => {
         dates: []
     };
 
+    // load the trip data from local storage
+    let trips = getTrips();
+    // set id to the next available id
+    tripData.id = trips.length + 1;
+
     // set button spinner
     document.getElementById("addBtn").innerHTML = 'Loading...<i class="fa fa-spinner fa-spin"></i>';
 
@@ -78,7 +83,6 @@ const handleTripEntry = event => {
             const country = data.geonames[0].countryName;
             const city = data.geonames[0].name;
             tripData.city = data.geonames[0];
-            console.log(data);
 
             // from the city lat and lon, get nearby hotels
             getHotels(lat, lon)
@@ -93,43 +97,44 @@ const handleTripEntry = event => {
                         option.innerHTML = hotel.hotelName;
                         hotelSelect.appendChild(option);
                     };
-
-                    // get the current weather for the city
-                    getWeather(lat, lon, weatherbitKey)
-                        .then(data => {
-                            tripData.weather = data.data;
-                        });
-
-                    // get forecast weather for the city
-                    getWeatherForecast(lat, lon, weatherbitKey)
-                        .then(data => {
-                            tripData.forecast = data.data;
-                        });
-
-                    // get the image for the city
-                    getLocalImage(city, pixabayKey)
-                        .then(data => {
-                            tripData.image = data.hits;
-                            // add image to the modal
-                            const image = document.getElementById("city-img");
-                            // if no image found, use a default image of the country
-                            if (data.totalHits == 0) {
-                                getLocalImage(country, pixabayKey)
-                                .then(stateData => {
-                                    image.src = stateData.hits[0].webformatURL;
-                                    });
-                            } else {
-                                image.src = data.hits[0].webformatURL;
-                            }
-                        });
-
-                    // Fill in the modal with the trip data and display the modal
-                    tripData.dates = [document.getElementById("start_date").value, document.getElementById("return_date").value];
-                    document.getElementById("modal-city").innerHTML = tripData.city.name + ", " + tripData.city.countryName;
-                    document.getElementById("departure").innerHTML = tripData.dates[0];
-                    document.getElementById("return").innerHTML = tripData.dates[1];
-                    modal.style.display = "block";
                 });
+
+            // get the current weather for the city
+            getWeather(lat, lon, weatherbitKey)
+                .then(data => {
+                    tripData.weather = data.data;
+                });
+
+            // get forecast weather for the city
+            getWeatherForecast(lat, lon, weatherbitKey)
+                .then(data => {
+                    tripData.forecast = data.data;
+                });
+
+            // get the image for the city
+            getLocalImage(city, pixabayKey)
+                .then(data => {
+                    tripData.image = data.hits;
+                    // add image to the modal
+                    const image = document.getElementById("city-img");
+                    // if no image found, use a default image of the country
+                    if (data.totalHits == 0 || data.hits[0].webformatURL == undefined) {
+                        getLocalImage(country, pixabayKey)
+                            .then(countryData => {
+                                tripData.image = countryData.hits;
+                                image.src = countryData.hits[0].webformatURL;
+                            });
+                    } else {
+                        image.src = data.hits[0].webformatURL;
+                    }
+                });
+
+            // Fill in the modal with the trip data and display the modal
+            tripData.dates = [document.getElementById("start_date").value, document.getElementById("return_date").value];
+            document.getElementById("modal-city").innerHTML = tripData.city.name + ", " + tripData.city.countryName;
+            document.getElementById("departure").innerHTML = tripData.dates[0];
+            document.getElementById("return").innerHTML = tripData.dates[1];
+            modal.style.display = "block";
         });
 }
 

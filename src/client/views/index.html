@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <title>Travel Planner</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -30,14 +31,21 @@
         <h1 class="form-title">Let's Take a Trip!</h1>
         <div class="form">
             <form id="trip-entry" onsubmit="Client.handleTripEntry(event)">
-                <label class="label location" for="location">Location</label>
-                <input class="input-city" type="search" id="location" name="location" placeholder="Enter a city and country"
-                    required>
-                <label class="label start-date" for="start_date">Start Date</label>
-                <input class="form start-date" type="date" id="start_date" name="start_date" required>
-                <label class="label end-date" for="return_date">Return Date</label>
-                <input class="form end-date" type="date" id="return_date" name="return_date" required>
-                <button class="button add-trip" id="addBtn" type="submit">Add a Trip</button>
+                <div class="form-column">
+                    <label class="label location" for="location">Location</label>
+                    <input class="input-city" type="search" id="location" name="location" placeholder="Enter a city and country" required>
+                </div>
+                <div class="form-column">
+                    <label class="label start-date" for="start_date">Start Date</label>
+                    <input class="form start-date" type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-column">
+                    <label class="label end-date" for="return_date">Return Date</label>
+                    <input class="form end-date" type="date" id="return_date" name="return_date" required>
+                </div>
+                <div class="form-column">
+                    <button class="button add-trip" id="addBtn" type="submit">Add a Trip</button>
+                </div>
             </form>
         </div>
     </section>
@@ -79,6 +87,17 @@
             <a href="https://www.weatherbit.io/api">Weatherbit.io</a>,
             <a href="https://pixabay.com/api/docs/">Pixabay.com</a> APIs</p>
     </footer>
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+    
 </body>
 
 </html>

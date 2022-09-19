@@ -1,10 +1,17 @@
 # Project 5: Travel App
 __Udacity Front End Developer Nanodegree Program__
 
-Project 5 todo
+This is a capstone project for the Udacity Front End Developer Nanodegree Program. The project is a travel app that obtains a desired trip location & date from the user, and displays weather and an image of the location using information obtained from external APIs.  
 
-# Example Screenshot
+# Dependencies
+The exeternal APIs used are the [Geonames API](http://www.geonames.org/export/web-services.html), the [Weatherbit API](https://www.weatherbit.io/api), and the [Pixabay API](https://pixabay.com/api/docs/).  You will need to create accounts with each of them to build and run the app.
+
+The project also uses the [Express](https://expressjs.com/) framework for Node.js, and the [Webpack](https://webpack.js.org/) module bundler.
+    
+
+# Example Screenshots
 ![Screenshot](/src/client/img/screenshot.png)
+![Screenshot Mobile](/src/client/img/screenshot_mobile.png)
 
 # Installation
 To install the code, use `git clone` to copy the repo locally.  Alternatively you can download the files from this repository.
@@ -21,14 +28,12 @@ Consult the [npm docs](https://nodejs.org/en/download/package-manager/) for inst
 Then  `cd` into the root project folder and run:
 - `npm install`
 
-You will need to create a `.env` file that contains an API key for [MeaningCloud's sentiment analysis API](https://www.meaningcloud.com/developer/sentiment-analysis/doc) and set the port you want the server to run in.  Example is shown below.
+You will need to create a `.env` file that contains an API keys and optionaly set the port you want the server to run in.  Example is shown below.
 
 ```
 GEONAMES_USERNAME = <username>
 WEATHERBIT_API_KEY= <api key>
 PIXABAY_API_KEY= <api key>
-ROADGOAT_API_KEY= <api key>
-ROADGOAT_SECRET_KEY= <secret key>
 PORT='8080'
 ```
 
@@ -39,7 +44,7 @@ For development:
 npm run build-dev
 ```
 
-For a production enironment:
+For a production environment:
 ```bash
 npm run build-prod
 npm run start

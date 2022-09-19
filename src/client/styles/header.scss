@@ -4,15 +4,15 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 10px 40px;
+    flex-wrap: wrap;
 }
 
 .nav {
     display: inline-block;
-}
-
-.nav li {
-    display: inline;
-    padding: 2px;
+    li {
+        display: inline;
+        padding: 2px;
+    }
 }
 
 .logo img {
